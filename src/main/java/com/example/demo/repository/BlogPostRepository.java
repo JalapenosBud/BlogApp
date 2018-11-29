@@ -45,7 +45,7 @@ public class BlogPostRepository implements BlogPostRepositoryInterface
                             "', '" + blogPostText + "')";
             
             stmt.executeUpdate(sqlCreatePost);
-            
+            System.out.println("posted blogpost: '" + title + "' to db");
         }
         catch (SQLException e)
         {
