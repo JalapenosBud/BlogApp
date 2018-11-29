@@ -2,6 +2,10 @@ drop database if exists blogapp;
 create database if not exists blogapp;
 use blogapp;
 
+DROP USER IF EXISTS 'groot'@'localhost';
+CREATE USER 'groot'@'localhost' IDENTIFIED BY 'iamgroot';
+GRANT ALL ON * TO 'groot'@'localhost';
+
 create table users
 (
 id int primary key auto_increment,
@@ -13,6 +17,7 @@ create table blogposts
 (
 id int primary key auto_increment,
 title varchar(25),
+author varchar(25),
 user_name_id int,
 creation_date date,
 blog_post_text blob,
