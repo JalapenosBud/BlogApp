@@ -13,27 +13,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/blogposts/blogpostindex.html")
+@RequestMapping("/blogposts")
 @ComponentScan("com.example.demo")
 public class BlogPostController
 {
-    
+    @Autowired
     BlogPostRepository blogPostRepository;
     
-    @GetMapping
+    @GetMapping("/")
+    public String index()
+    {
+        return "/";
+    }
+    
+    @GetMapping("/create")
     public String getCreateBlogPost(Model model)
     {
         model.addAttribute("blogpost", new BlogPost());
         
-        return "/blogposts/createNew";
+        return "/blogposts/create";
     }
     
-    @PostMapping("/newblogpost")
+    @PostMapping("/create")
     public String postCreateBlogPost(@ModelAttribute BlogPost blogPost)
     {
         blogPostRepository.saveBlogPostToDB(blogPost);
         
         //refactor this return to handle jquery auto update in html
-        return "/blogposts/blogpostindex.html";
+        return "/blogposts/postcreated";
     }
 }

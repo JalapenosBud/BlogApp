@@ -18,11 +18,19 @@ public class BlogPostRepository implements BlogPostRepositoryInterface
     public void saveBlogPostToDB(BlogPost model)
     {
         String jdbcdriver = "com.mysql.jdbc.Driver";
-        String db_url = "jdbc:mysql://localhost";
+        String db_url = "jdbc:mysql://localhost/blogapp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+        }
+        catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     
         try
         {
-            connection = DriverManager.getConnection(db_url,"groot","");
+            connection = DriverManager.getConnection(db_url,"groot","iamgroot");
             stmt = connection.createStatement();
     
             String title = model.getTitle();
@@ -30,11 +38,11 @@ public class BlogPostRepository implements BlogPostRepositoryInterface
             String blogPostText = model.getBlog_post_text();
     
             String sqlCreatePost =
-                    "INSERT INTO blogposts" +
-                            "values(title,author,creation_date)" +
+                    "INSERT INTO blogposts(title,author,blog_post_text)" +
+                            "value" +
                             "('" + title +
                             "', '" + author +
-                            "', '" + blogPostText + "', ')";
+                            "', '" + blogPostText + "')";
             
             stmt.executeUpdate(sqlCreatePost);
             
