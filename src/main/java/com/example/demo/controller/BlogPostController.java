@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/blogposts")
+@RequestMapping("/blogposts/blogpostindex.html")
 @ComponentScan("com.example.demo")
 public class BlogPostController
 {
@@ -20,17 +21,19 @@ public class BlogPostController
     BlogPostRepository blogPostRepository;
     
     @GetMapping
-    public void getListOfBlogs()
+    public String getCreateBlogPost(Model model)
     {
-    
+        model.addAttribute("blogpost", new BlogPost());
+        
+        return "/blogposts/createNew";
     }
     
     @PostMapping("/newblogpost")
-    public String createBlogPost(@ModelAttribute BlogPost blogPost)
+    public String postCreateBlogPost(@ModelAttribute BlogPost blogPost)
     {
         blogPostRepository.saveBlogPostToDB(blogPost);
         
         //refactor this return to handle jquery auto update in html
-        return "/blogposts";
+        return "/blogposts/blogpostindex.html";
     }
 }

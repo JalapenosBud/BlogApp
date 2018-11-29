@@ -4,6 +4,20 @@ import java.util.Date;
 
 public class BlogPost
 {
+    public BlogPost()
+    {
+    
+    }
+    
+    public BlogPost(int id, String title, String user_name_author, Date creation_date, String blog_post_text)
+    {
+        this.id = id;
+        this.title = title;
+        this.user_name_author = user_name_author;
+        this.creation_date = creation_date;
+        this.blog_post_text = blog_post_text;
+    }
+    
     int id;
     String title;
     String user_name_author;
