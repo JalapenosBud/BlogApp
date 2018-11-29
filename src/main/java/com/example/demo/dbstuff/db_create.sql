@@ -4,22 +4,20 @@ use blogapp;
 
 create table users
 (
-id int auto_increment,
+id int primary key auto_increment,
 user_name varchar(25),
-password varchar(12),
-
-primary key(id, user_name)
+password varchar(12)
 );
 
 create table blogposts
 (
 id int primary key auto_increment,
 title varchar(25),
-user_name_author varchar(25),
+user_name_id int,
 creation_date date,
 blog_post_text blob,
 
-foreign key (user_name_author) references users(user_name)
+foreign key (user_name_id) references users(id)
 );
 
 create table tag_categories
@@ -33,5 +31,7 @@ create table tags
 id int primary key auto_increment,
 tag_name varchar(25),
 
-foreign key(tag_name) references tag_categories(tag_category_name)
+tag_category_id int,
+
+foreign key(tag_category_id) references tag_categories(id)
 );
