@@ -1,88 +1,30 @@
 package com.example.demo.repository;
 
-import com.example.demo.interfaces.BlogPostRepositoryInterface;
 import com.example.demo.model.BlogPost;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-import java.sql.*;
 import java.util.List;
+import java.util.Optional;
 
-@Repository
-public class BlogPostRepository implements BlogPostRepositoryInterface
-{
-    Connection connection = null;
-    Statement stmt = null;
+public class BlogPostRepository implements BaseRepository<BlogPost, Long> {
+
     @Override
-    public void saveBlogPostToDB(BlogPost model)
-    {
-        String jdbcdriver = "com.mysql.jdbc.Driver";
-        String db_url = "jdbc:mysql://localhost/blogapp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        try
-        {
-            Class.forName("com.mysql.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-    
-        try
-        {
-            connection = DriverManager.getConnection(db_url,"groot","iamgroot");
-            stmt = connection.createStatement();
-    
-            String title = model.getTitle();
-            String author = model.getAuthor();
-            String blogPostText = model.getBlog_post_text();
-    
-            String sqlCreatePost =
-                    "INSERT INTO blogposts(title,author,blog_post_text)" +
-                            "value" +
-                            "('" + title +
-                            "', '" + author +
-                            "', '" + blogPostText + "')";
-            
-            stmt.executeUpdate(sqlCreatePost);
-            System.out.println("posted blogpost: '" + title + "' to db");
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        finally
-        {
-            try{
-                if(stmt != null)
-                    stmt.close();
-            }
-            catch (SQLException e)
-            {
-                e.printStackTrace();
-            }
-            if(connection!=null)
-            {
-                try
-                {
-                    connection.close();
-                }
-                catch (SQLException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }
-    
-        
+    public void delete(BlogPost deleted) {
+
     }
-    
+
     @Override
-    public List<BlogPost> getAllBlogPosts()
-    {
+    public List<BlogPost> findAll() {
         return null;
     }
 
     @Override
-    public BlogPost searchForBlogPost(String searchTerm) {
+    public Optional<BlogPost> findOne(Long l) {
+        return Optional.empty();
+    }
+
+    @Override
+    public BlogPost save(BlogPost persisted) {
         return null;
     }
 }
