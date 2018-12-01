@@ -2,7 +2,8 @@ package com.example.demo.model;
 
 import java.util.Date;
 
-
+@Entity
+@
 public class BlogPost
 {
     public BlogPost()
