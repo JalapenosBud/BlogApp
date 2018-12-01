@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
@@ -21,6 +22,7 @@ interface BaseRepository<T,ID extends Serializable> extends Repository<T, ID> {
 
     List<T> findAll();
 
+    @Query("SELECT t.title from blogposts t where t.id = :id")
     Optional<T> findOne(ID id);
 
     T save (T persisted);

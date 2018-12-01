@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @ComponentScan("com.example.demo")
 public class BlogPostController
 {
-    @Autowired
-    BlogPostRepository blogPostRepository;
     
     @GetMapping("/")
     public String index()
