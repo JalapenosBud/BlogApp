@@ -2,9 +2,7 @@ package com.example.demo.repository;
 
 import com.example.demo.interfaces.BlogPostRepositoryInterface;
 import com.example.demo.model.BlogPost;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 
 import java.sql.*;
 import java.util.List;
@@ -34,7 +32,7 @@ public class BlogPostRepository implements BlogPostRepositoryInterface
             stmt = connection.createStatement();
     
             String title = model.getTitle();
-            String author = model.getUser_name_author();
+            String author = model.getAuthor();
             String blogPostText = model.getBlog_post_text();
     
             String sqlCreatePost =

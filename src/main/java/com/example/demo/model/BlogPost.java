@@ -1,31 +1,54 @@
 package com.example.demo.model;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.sql.LobTypeMappings;
+
+import javax.persistence.*;
+import java.time.ZonedDateTime;
+
+
 import java.util.Date;
 
-//@Entity
-//@Table(name ="blogposts")
+@Entity
+@Table(name = "blogposts")
 public class BlogPost
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long id;
+
+    @Column(name = "title",nullable = false, length = 100)
+    private String title;
+
+    @Column(name = "author", nullable = false, length = 25)
+    private String author;
+
+    @Column(name = "creation_date")
+    @Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentZonedDateTime")
+    private ZonedDateTime creation_date;
+
+    @Column(name = "blog_post_text")
+    @Lob
+    private String blog_post_text;
+
+
     public BlogPost()
     {
     
     }
     
-    public BlogPost(int id, String title, String user_name_author, Date creation_date, String blog_post_text)
+    public BlogPost(long id, String title, String author, ZonedDateTime creation_date, String blog_post_text)
     {
         this.id = id;
         this.title = title;
-        this.user_name_author = user_name_author;
+        this.author = author;
         this.creation_date = creation_date;
         this.blog_post_text = blog_post_text;
     }
     
-    int id;
-    String title;
-    String user_name_author;
-    Date creation_date;
+
     
-    public int getId()
+    public long getId()
     {
         return id;
     }
@@ -45,22 +68,22 @@ public class BlogPost
         this.title = title;
     }
     
-    public String getUser_name_author()
+    public String getAuthor()
     {
-        return user_name_author;
+        return author;
     }
     
-    public void setUser_name_author(String user_name_author)
+    public void setAuthor(String author)
     {
-        this.user_name_author = user_name_author;
+        this.author = author;
     }
     
-    public Date getCreation_date()
+    public ZonedDateTime getCreation_date()
     {
         return creation_date;
     }
     
-    public void setCreation_date(Date creation_date)
+    public void setCreation_date(ZonedDateTime creation_date)
     {
         this.creation_date = creation_date;
     }
@@ -75,5 +98,5 @@ public class BlogPost
         this.blog_post_text = blog_post_text;
     }
     
-    String blog_post_text;
+
 }

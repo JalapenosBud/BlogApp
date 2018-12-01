@@ -9,18 +9,18 @@ GRANT ALL ON * TO 'groot'@'localhost';
 create table users
 (
 id int primary key auto_increment,
-user_name varchar(25),
+user_name varchar(25) NOT NULL,
 password varchar(12)
 );
 
 create table blogposts
 (
 id int primary key auto_increment,
-title varchar(25),
-author varchar(25),
-user_name_id int,
-creation_date date,
-blog_post_text blob,
+title varchar(100) NOT NULL,
+author varchar(25) NOT NULL,
+user_name_id int NOT NULL,
+creation_date date NOT NULL,
+blog_post_text blob NOT NULL,
 
 foreign key (user_name_id) references users(id)
 );
@@ -28,15 +28,15 @@ foreign key (user_name_id) references users(id)
 create table tag_categories
 (
 id int primary key auto_increment,
-tag_category_name varchar(25)
+tag_category_name varchar(25) NOT NULL
 );
 
 create table tags
 (
 id int primary key auto_increment,
-tag_name varchar(25),
+tag_name varchar(25) NOT NULL,
 
-tag_category_id int,
+tag_category_id int NOT NULL,
 
 foreign key(tag_category_id) references tag_categories(id)
 );
