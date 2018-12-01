@@ -9,25 +9,25 @@ import java.time.ZonedDateTime;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "blogposts")
+//@Entity
+//@Table(name = "blogposts")
 public class BlogPost
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
-    @Column(name = "title",nullable = false, length = 100)
+   // @Column(name = "title",nullable = false, length = 100)
     private String title;
 
-    @Column(name = "author", nullable = false, length = 25)
+   // @Column(name = "author", nullable = false, length = 25)
     private String author;
 
-    @Column(name = "creation_date")
-    private ZonedDateTime creation_date;
+    //@Column(name = "creation_date")
+    private Date creation_date;
 
-    @Column(name = "blog_post_text")
-    @Lob
+   // @Column(name = "blog_post_text")
+   // @Lob
     private String blog_post_text;
 
 
@@ -36,7 +36,7 @@ public class BlogPost
     
     }
     
-    public BlogPost(long id, String title, String author, ZonedDateTime creation_date, String blog_post_text)
+    public BlogPost(long id, String title, String author, Date creation_date, String blog_post_text)
     {
         this.id = id;
         this.title = title;
@@ -77,12 +77,12 @@ public class BlogPost
         this.author = author;
     }
     
-    public ZonedDateTime getCreation_date()
+    public Date getCreation_date()
     {
         return creation_date;
     }
     
-    public void setCreation_date(ZonedDateTime creation_date)
+    public void setCreation_date(Date creation_date)
     {
         this.creation_date = creation_date;
     }
