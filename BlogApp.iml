@@ -60,8 +60,6 @@
     <orderEntry type="library" name="Maven: org.jboss:jandex:2.0.5.Final" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
-    <orderEntry type="library" name="Maven: javax.servlet:servlet-api:unknown" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.hsqldb:hsqldb:2.2.9" level="project" />
     <orderEntry type="library" name="Maven: javassist:javassist:unknown" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-thymeleaf:2.1.0.RELEASE" level="project" />
