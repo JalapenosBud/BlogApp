@@ -24,7 +24,6 @@ public class BlogPost
     private String author;
 
     @Column(name = "creation_date")
-    @Type(type = "org.jadira.usertype.dateandtime.threeten.PersistentZonedDateTime")
     private ZonedDateTime creation_date;
 
     @Column(name = "blog_post_text")

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>ny blogpost</head>
+<form th:action="@{/blogposts/create}" method="POST">
+<p>Blog title: </p>     <input type="text" th:field="${blogpost.title}" required maxlength="50"><br/>
+<p>Author name:</p>     <input type="text" th:field="${blogpost.author}" required maxlength="20"><br/>
+    <p>write your blog here: </p> <input type="text" th:field="${blogpost.blog_post_text}" required maxlength="20"><br/>
+
+<input type="submit" value="saveBlogPost" title="gem">Click to save post</input>
+</form>
+
+</html>

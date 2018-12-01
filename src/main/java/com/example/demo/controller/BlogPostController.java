@@ -41,4 +41,17 @@ public class BlogPostController
         //refactor this return to handle jquery auto update in html
         return "/blogposts/postcreated";
     }
+
+    @GetMapping("/search")
+    public String getSearchBlogPost()
+    {
+        return "search";
+    }
+
+    @PostMapping("/search")
+    public String postSearchBlogPost(String titlename)
+    {
+        return "redirect:search";
+    }
+
 }
