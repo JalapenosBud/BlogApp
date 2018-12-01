@@ -12,4 +12,5 @@ public interface BlogPostRepositoryInterface
 {
     void saveBlogPostToDB(BlogPost model);
     List<BlogPost> getAllBlogPosts();
+    BlogPost searchForBlogPost(String searchTerm);
 }
