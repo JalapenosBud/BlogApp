@@ -2,8 +2,8 @@ package com.example.demo.model;
 
 import java.util.Date;
 
-@Entity
-@
+//@Entity
+//@Table(name ="blogposts")
 public class BlogPost
 {
     public BlogPost()

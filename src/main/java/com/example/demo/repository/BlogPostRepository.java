@@ -82,4 +82,9 @@ public class BlogPostRepository implements BlogPostRepositoryInterface
     {
         return null;
     }
+
+    @Override
+    public BlogPost searchForBlogPost(String searchTerm) {
+        return null;
+    }
 }
