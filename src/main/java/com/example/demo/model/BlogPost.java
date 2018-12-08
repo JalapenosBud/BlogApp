@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import org.hibernate.annotations.NaturalIdCache;
 import org.hibernate.annotations.Type;
 import org.hibernate.type.descriptor.sql.LobTypeMappings;
 
@@ -8,27 +9,37 @@ import java.time.ZonedDateTime;
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-//@Entity
-//@Table(name = "blogposts")
+@NaturalIdCache
+@Entity
+@Table(name = "blogposts")
 public class BlogPost
 {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
-   // @Column(name = "title",nullable = false, length = 100)
+    @Column(name = "title",nullable = false, length = 100)
     private String title;
 
-   // @Column(name = "author", nullable = false, length = 25)
+    @Column(name = "author", nullable = false, length = 25)
     private String author;
 
-    //@Column(name = "creation_date")
+    @Column(name = "creation_date")
     private Date creation_date;
 
-   // @Column(name = "blog_post_text")
-   // @Lob
+    @Column(name = "blog_post_text")
+    @Lob
     private String blog_post_text;
+
+    @ManyToMany(cascade = { CascadeType.PERSIST,
+            CascadeType.MERGE})
+    @JoinTable(name = "post_tag",
+            joinColumns = @JoinColumn(name = "post_id"), //parent
+            inverseJoinColumns = @JoinColumn(name ="tag_id")) //child
+    private Set<Tag> tags = new HashSet<>();
 
 
     public BlogPost()
