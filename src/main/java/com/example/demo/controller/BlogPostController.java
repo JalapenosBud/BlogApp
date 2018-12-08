@@ -18,12 +18,12 @@ public class BlogPostController
     @Autowired
     BlogPostService blogPostService;
 
-    @RequestMapping
+    /*@RequestMapping
     public String handleBlogPostRequestByUser(@RequestParam("User") String userName, Model map)
     {
         map.addAttribute("msg", "blogposts request by user: " + userName);
         return "/index";
-    }
+    }*/
 
     @GetMapping
     public String index(Model model, @RequestParam(defaultValue = "0")int page)

@@ -18,7 +18,7 @@ import java.util.Set;
 public class BlogPost
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     @Column(name = "title",nullable = false, length = 100)
