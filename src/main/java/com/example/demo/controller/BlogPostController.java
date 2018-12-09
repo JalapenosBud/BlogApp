@@ -59,14 +59,15 @@ public class BlogPostController
     @GetMapping("/all")
     public ResponseTransfer getResponse()
     {
-        ResponseTransfer responseTransfer = new ResponseTransfer("Done", posts);
+        ResponseTransfer responseTransfer = new ResponseTransfer("Done", blogPostService.findAll());
         return responseTransfer;
     }
 
     @PostMapping(value = "/save")
    public ResponseTransfer postBlogpost(@RequestBody BlogPost blogPost)
     {
-        posts.add(blogPost);
+        blogPostService.save(blogPost);
+        //posts.add(blogPost);
 
         ResponseTransfer resp = new ResponseTransfer("Done", blogPost);
         return resp;
