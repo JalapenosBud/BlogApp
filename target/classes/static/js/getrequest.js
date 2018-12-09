@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 
     // GET REQUEST
-    $("#getAllCustomerId").click(function(event){
+    $("#getAllBlogPostId").click(function(event){
         event.preventDefault();
         ajaxGet();
     });
@@ -15,9 +15,9 @@ $( document ).ready(function() {
                 if(result.status == "Done"){
                     $('#getResultDiv ul').empty();
                     var custList = "";
-                    $.each(result.data, function(i, customer){
-                        var customer = "- Customer with Id = " + i + ", firstname = " + customer.firstname + ", lastName = " + customer.lastname + "<br>";
-                        $('#getResultDiv .list-group').append(customer)
+                    $.each(result.data, function(i, blogpost){
+                        var blogpost = "- blogpost with Id = " + i + ", title = " + blogpost.title + ", author = " + blogpost.author + "<br>";
+                        $('#getResultDiv .list-group').append(blogpost)
                     });
                     console.log("Success: ", result);
                 }else{

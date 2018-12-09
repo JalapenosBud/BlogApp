@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 
     // SUBMIT FORM
-    $("#customerForm").submit(function(event) {
+    $("#blogpostForm").submit(function(event) {
         // Prevent the form from submitting via the browser.
         event.preventDefault();
         ajaxPost();
@@ -12,8 +12,9 @@ $( document ).ready(function() {
 
         // PREPARE FORM DATA
         var formData = {
-            firstname : $("#firstname").val(),
-            lastname :  $("#lastname").val()
+            id : $("#id").val(),
+            title : $("#title").val(),
+            author :  $("#author").val()
         }
 
         // DO POST
@@ -27,8 +28,8 @@ $( document ).ready(function() {
                 if(result.status == "Done"){
                     $("#postResultDiv").html("<p style='background-color:#7FA7B0; color:white; padding:20px 20px 20px 20px'>" +
                         "Post Successfully! <br>" +
-                        "---> Customer's Info: FirstName = " +
-                        result.data.firstname + " ,LastName = " + result.data.lastname + "</p>");
+                        "---> Blogpost's Info: Title = " +
+                        result.data.title + " ,Author = " + result.data.author + "</p>");
                 }else{
                     $("#postResultDiv").html("<strong>Error</strong>");
                 }
@@ -46,7 +47,7 @@ $( document ).ready(function() {
     }
 
     function resetData(){
-        $("#firstname").val("");
-        $("#lastname").val("");
+        $("#title").val("");
+        $("#author").val("");
     }
 })
