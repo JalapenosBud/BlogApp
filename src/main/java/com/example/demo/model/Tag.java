@@ -18,4 +18,36 @@ public class Tag {
 
     @ManyToMany( mappedBy = "tags")
     private Set<BlogPost> blogPosts = new HashSet<>();
+
+    public Tag() {
+    }
+
+    public Tag(@Size(max = 64) String name, Set<BlogPost> blogPosts) {
+        this.name = name;
+        this.blogPosts = blogPosts;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<BlogPost> getBlogPosts() {
+        return blogPosts;
+    }
+
+    public void setBlogPosts(Set<BlogPost> blogPosts) {
+        this.blogPosts = blogPosts;
+    }
 }

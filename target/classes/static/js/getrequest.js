@@ -16,7 +16,12 @@ $( document ).ready(function() {
                     $('#getResultDiv ul').empty();
                     var custList = "";
                     $.each(result.data, function(i, blogpost){
-                        var blogpost = "- blogpost with Id = " + i + ", title = " + blogpost.title + ", author = " + blogpost.author + "<br>";
+                        var blogpost = "- blogpost with Id = " + i +
+                            ", title = " + blogpost.title +
+                            ", author = " + blogpost.author +
+                            ", creation date " + blogpost.creation_date +
+                            ", blogpost = " + blogpost.blog_post_text +
+                            "<br>";
                         $('#getResultDiv .list-group').append(blogpost)
                     });
                     console.log("Success: ", result);

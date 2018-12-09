@@ -14,7 +14,10 @@ $( document ).ready(function() {
         var formData = {
             id : $("#id").val(),
             title : $("#title").val(),
-            author :  $("#author").val()
+            author :  $("#author").val(),
+            creation_date : $("#creation_date").val(),
+            blog_post_text : $("#blog_post_text").val()
+           // ,tags : $("#tags").val()
         }
 
         // DO POST
@@ -28,8 +31,11 @@ $( document ).ready(function() {
                 if(result.status == "Done"){
                     $("#postResultDiv").html("<p style='background-color:#7FA7B0; color:white; padding:20px 20px 20px 20px'>" +
                         "Post Successfully! <br>" +
-                        "---> Blogpost's Info: Title = " +
-                        result.data.title + " ,Author = " + result.data.author + "</p>");
+                        "---> Blogpost's Info: Title = " + result.data.title +
+                        " ,Author = " + result.data.author +
+                        ", creation date = " + result.data.creation_date +
+                        ", text = " + result.data.blog_post_text +
+                        "</p>");
                 }else{
                     $("#postResultDiv").html("<strong>Error</strong>");
                 }
