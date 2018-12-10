@@ -21,6 +21,8 @@
         <td th:text="${blogpost.title}"></td>
         <td th:text="${blogpost.author}"></td>
         <td th:text="${blogpost.blog_post_text}"></td>
+
+        <td><a th:href="@{../blogposts/findOne/(id=${blogpost.id})}">Show One More</a></td>
     </tr>
     </tbody>
 </table>

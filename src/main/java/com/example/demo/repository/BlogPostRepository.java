@@ -8,7 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface BlogPostRepository extends JpaRepository<BlogPost, Integer>
+public interface BlogPostRepository extends JpaRepository<BlogPost, Long>
 {
+    @Query("SELECT b.title FROM BlogPost b where b.id = :id")
+    String findTitleById(@Param("id") Long id);
+
     List<BlogPost> findByTitleContainsAllIgnoreCase(String titlePart);
 }

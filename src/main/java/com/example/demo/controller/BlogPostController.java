@@ -57,10 +57,18 @@ public class BlogPostController
         return "blogposts/index";
     }*/
     @GetMapping("/results")
-    public String getAllResults(Model model)
+    public String getAllResults(Model model,@RequestParam(defaultValue = "0") int page)
     {
-        model.addAttribute("blogposts", blogPostService.findAll());
+        model.addAttribute("blogposts", blogPostService.listAll(page));
+        model.addAttribute("currentPage",page);
         return "blogposts/results";
+    }
+
+    @GetMapping("/findOne")
+    @ResponseBody
+    public String findTitleById(Long id)
+    {
+        return blogPostService.findTitleById(id);
     }
 
 

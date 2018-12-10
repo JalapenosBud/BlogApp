@@ -20,6 +20,16 @@ public class BlogPostService {
         return repository.findAll();
     }
 
+    public String findTitleById(Long id)
+    {
+        return repository.findTitleById(id);
+    }
+
+    /*public BlogPost findById(Long id)
+    {
+        return repository.findById(id);
+    }*/
+
     public Page<BlogPost> listAll(int page) {
         return repository.findAll(PageRequest.of(page,10));
     }

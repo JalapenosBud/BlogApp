@@ -2,11 +2,9 @@
 
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 
-<form th:action="@{/blogposts/search}"
-      th:object="${search}" method="post" class="form-horizontal"
-      role="form">
+<form th:action="@{/blogposts/results}" th:object="${search}" method="post">
     <h2>Search</h2>
-        <input type="text" th:field="${search.text}" placeholder="text">
+    <input type="text" th:field="${search.text}" placeholder="text">
     <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
