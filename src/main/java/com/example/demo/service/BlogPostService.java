@@ -28,4 +28,9 @@ public class BlogPostService {
     {
         return repository.save(blogPost);
     }
+
+    public List<BlogPost> findByTitleContainsAllIgnoreCase(String titlePart)
+    {
+        return repository.findByTitleContainsAllIgnoreCase(titlePart);
+    }
 }

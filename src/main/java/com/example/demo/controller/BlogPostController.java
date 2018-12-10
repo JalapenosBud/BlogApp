@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.BlogPost;
 import com.example.demo.model.ResponseTransfer;
+import com.example.demo.model.Search;
 import com.example.demo.repository.BlogPostRepository;
 import com.example.demo.service.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@RestController
+@Controller
+//@RestController
 @RequestMapping("/blogposts")
 @ComponentScan("com.example.demo")
 public class BlogPostController
@@ -55,6 +56,28 @@ public class BlogPostController
         model.addAttribute("blogposts", blogPostService.listAll(page));
         return "blogposts/index";
     }*/
+    @GetMapping("/results")
+    public String getAllResults(Model model)
+    {
+        model.addAttribute("blogposts", blogPostService.findAll());
+        return "blogposts/results";
+    }
+
+
+    @GetMapping("/search")
+    public String getSearchBlogPost(Model model)
+    {
+        model.addAttribute("search",new Search());
+
+        return "blogposts/search";
+    }
+
+    @PostMapping("/search")
+    public String postSearchBlogPost(@ModelAttribute Search search)
+    {
+        blogPostService.findByTitleContainsAllIgnoreCase(search.getText());
+        return "blogposts/results";
+    }
 
     @GetMapping("/all")
     public ResponseTransfer getResponse()
@@ -64,7 +87,7 @@ public class BlogPostController
     }
 
     @PostMapping(value = "/save")
-   public ResponseTransfer postBlogpost(@RequestBody BlogPost blogPost)
+    public ResponseTransfer postBlogpost(@RequestBody BlogPost blogPost)
     {
         blogPostService.save(blogPost);
         //posts.add(blogPost);
@@ -90,11 +113,7 @@ public class BlogPostController
         return "blogposts/postcreated";
     }
 
-    @GetMapping("/search")
-    public String getSearchBlogPost()
-    {
-        return "search";
-    }
+
 
     @PostMapping("/search")
     public String postSearchBlogPost(String titlename)

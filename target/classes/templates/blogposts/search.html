@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="eng" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
 
-<form th:action="@{/blogposts/search}" method="POST">
-    <p>Blog title: </p><input type="status" th:field="${blogpost.title}" required maxlength="50"><br/>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
-    <input type="submit" value="searchForBlogPost" title="search">Click to search for a post post</input>
+<form th:action="@{/blogposts/search}"
+      th:object="${search}" method="post" class="form-horizontal"
+      role="form">
+    <h2>Search</h2>
+        <input type="text" th:field="${search.text}" placeholder="text">
+    <button type="submit" class="btn btn-primary">Submit</button>
+
 </form>
-
 </html>
